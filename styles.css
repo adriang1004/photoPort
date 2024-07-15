@@ -1,0 +1,148 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.header-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header-container h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.header-container p {
+    margin: 5px 0 20px;
+    font-size: 1em;
+    color: #ccc;
+}
+
+.filter-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.filter-button {
+    background-color: #555;
+    color: white;
+    border: 3px solid transparent;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+.filter-button[data-filter="film"]::after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 5px;
+    background-color: #ffc0cb; /* Pink for film */
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.filter-button[data-filter="digital"]::after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 5px;
+    background-color: #1a062c; /* Dark purple for digital */
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.filter-button:hover {
+    background-color: #777;
+}
+
+.gallery-container {
+    position: relative;
+    width: 90%;
+    max-width: 1200px; /* Increased max-width */
+    height: 60vh; /* Increased height */
+    overflow: hidden;
+}
+
+.gallery {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-indicator {
+    width: 50px;
+    height: 5px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: transparent;
+}
+
+.gallery-image {
+    display: none; /* Hide all images by default */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Maintain aspect ratio */
+}
+
+.gallery-image.active {
+    display: block; /* Display the active image */
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 2em;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1; /* Ensure buttons are above images */
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+    .gallery-container {
+        height: 50vh; /* Reduce height for mobile */
+    }
+
+    .prev, .next {
+        font-size: 1.5em; /* Reduce button size for mobile */
+        padding: 5px;
+    }
+
+    .filter-button {
+        padding: 8px 16px; /* Adjust padding for mobile */
+        font-size: 0.9em; /* Reduce font size for mobile */
+    }
+}
